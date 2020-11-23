@@ -1,0 +1,23 @@
+{% extends "base.html" %} 
+
+{% block title %}Madlibs{% endblock %}
+
+{% block h2 %}MAD LIBS{% endblock %}      
+
+{% block content %}
+<form action="story">
+    {% for entry in s.prompts %}
+    <div>
+        <div class="labels">
+            <label for="{{entry}}"> {{entry}}: </label>
+        </div>
+        <input type="text" name="{{entry}}" id="{{entry}}" placeholder="Enter a {{entry}}">
+    </div>
+    <br>
+    {% endfor %}
+    <!-- stolen from answer key -->
+    <!-- I spent a lot of time trying to figure out how to pass data between routes. Wish they would've just told us about thi :/  -->
+    <input type="hidden" name="story_title" value="{{story_title}}">
+    <button>Submit</button>
+</form>
+{% endblock %}

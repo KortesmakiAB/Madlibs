@@ -1,0 +1,13 @@
+{% extends "base.html" %} 
+
+{% block title %}Your Story{% endblock %}
+
+{% block h2 %}YOUR STORY{% endblock %}      
+
+{% block content %}
+{% autoescape off %}
+<div class="story">
+    {{story_to_gen.generate(user_answers)}}
+</div>
+{% endautoescape %}
+{% endblock %}
