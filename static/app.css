@@ -28,3 +28,9 @@ span {
 	color: red;
 	font-family: 'Nerko One', cursive;
 }
+
+button {
+	font-family: 'Nerko One', cursive;
+	margin: 15px;
+	font-size: 1.05rem;
+}

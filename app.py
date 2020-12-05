@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect
 from stories import Story, stories
 # from flask_debugtoolbar import DebugToolbarExtension
 
@@ -15,12 +15,14 @@ app = Flask(__name__)
 @app.route('/')
 def home_page():
     """Offer user choice of Madlib Games"""
+
     return render_template('index.html', stories=stories.values())
 
 
 @app.route('/form')
 def show_form():
     """Show Form for User Input"""
+
     story_title = request.args["madlib"]
     for story in stories.values():
         if story.title == story_title:
@@ -32,6 +34,7 @@ def show_form():
 @app.route("/story")
 def show_story():
     """Display Madlib Story"""
+
     answers = request.args
     story_title = request.args["story_title"]
     for story in stories.values():
@@ -39,3 +42,10 @@ def show_story():
             story_to_gen = story
             
     return render_template("story.html", story_to_gen=story_to_gen, user_answers=answers)
+
+
+@app.route('/play-again')
+def play_again():
+    """Redirect Home"""
+
+    return redirect('/')
